@@ -36,6 +36,17 @@ class HolidayList:
         else:
             print('Error: Please try again.')
 
+    def findHoliday(self, HolidayName, Date):
+        # Find Holiday in innerHolidays
+        found_holiday = [x for x in self.innerHolidays if x.name == HolidayName and x.date == Date]
+        # Return Holiday object
+        try:
+            found_hol_obj = found_holiday[0]
+        except IndexError:
+            found_hol_obj = None
+        return found_hol_obj
+
+
 
 
 
