@@ -5,6 +5,7 @@ from bs4 import BeautifulSoup
 import requests
 from dataclasses import dataclass
 import inspect
+from config import jsonlocation
 
 #Holiday class
 ##
@@ -57,8 +58,20 @@ class HolidayList:
             {HolidayName} has been removed from the list.
         ''')
 
-    def read_json(filelocation):
+    def read_json(jsonlocation):
         pass
+        # Read in things from json file location
+        with open(jsonlocation, 'r') as f:
+            data = json.load(f)
+            f.close()
+        # Use addHoliday function to add holidays to inner list.
+        for holiday in data['holidays']:
+            holiday_name = holiday['name']
+            holidate = holiday['date']
+            date_format = '%Y-%m-%d'
+            formatted_date = datetime.strptime(holidate, date_format).date()
+            holidayobj = Holiday(holiday_name, formatted_date)
+            a_holiday_list.addHoliday(holidayobj)
 
 
 
