@@ -58,8 +58,7 @@ class HolidayList:
             {HolidayName} has been removed from the list.
         ''')
 
-    def read_json(jsonlocation):
-        pass
+    def read_json(self, jsonlocation):
         # Read in things from json file location
         with open(jsonlocation, 'r') as f:
             data = json.load(f)
@@ -71,7 +70,7 @@ class HolidayList:
             date_format = '%Y-%m-%d'
             formatted_date = datetime.strptime(holidate, date_format).date()
             holidayobj = Holiday(holiday_name, formatted_date)
-            a_holiday_list.addHoliday(holidayobj)
+            self.addHoliday(holidayobj)
 
 
 
