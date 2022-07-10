@@ -94,6 +94,18 @@ class HolidayList:
 
 
 
+#UI Start Up
+##
+def StartUp(holiday_list):
+    #Find number of holidays stored in system
+    num_holidays = holiday_list.numHolidays()
+    print(f'''
+        Holiday Management
+        =================================
+        There are {num_holidays} holidays stored in the system
+    ''')
+    
+    #MainMenu()
 
 #UI Add Holiday
 ##
