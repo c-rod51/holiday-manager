@@ -105,6 +105,20 @@ class HolidayList:
         for hol in filt_hol_list:
             print(hol)
 
+    def viewCurrentWeek(self):
+        # Use the Datetime Module to look up current week and year
+        current_year = datetime.now().isocalendar()[0]
+        current_week = datetime.now().isocalendar()[1]
+        # Use your filter_holidays_by_week function to get the list of holidays
+        #current_week_hol = self.innerHolidays.filter_holidays_by_week(current_year, current_week)
+        # Use your displayHolidaysInWeek function to display the holidays in the week
+        self.displayHolidaysInWeek(current_year, current_week)
+        # Ask user if they want to get the weather
+        #get_weather = str(input('Would you like to see the weather? [y/n]: ')).lower()
+        # If yes, use your getWeather function and display results
+        #if get_weather == 'y':
+        #    for hol in
+
 
 
 #UI Start Up
@@ -208,6 +222,31 @@ def SaveHolidayList(holiday_list):
             Success:
             Your Changes have been saved
         ''')
+    
+    
+    #MainMenu()
+
+#UI View Holidays
+
+def ViewHolidays(holiday_list):
+    #Print welcome message
+    print(f'''
+        View Holidays
+        ==============
+    ''')
+    #User save input
+    holiday_year = int(input('Which year?: '))
+    #Ensure year is within [current year-2, current_year+2]
+    holiday_week = input('Which week? #[1-52, Leave blank for the current week]: ')
+    #Print holidays in week
+    if holiday_week == '':
+        print(f'These are the holidays for this week:')
+        holiday_list.viewCurrentWeek()
+        
+    else:
+        holiday_week = int(holiday_week)
+        print(f'These are the holidays for {holiday_year} week#{holiday_week}:')
+        holiday_list.displayHolidaysInWeek(holiday_year, holiday_week)
     
     
     #MainMenu()
