@@ -88,6 +88,10 @@ class HolidayList:
             json.dump(holiday_dict_list, f, sort_keys = True, indent = 4)
             f.close()
 
+    def numHolidays(self):
+        # Return the total number of holidays in innerHolidays
+        return len(self.innerHolidays)
+
 
 
 
