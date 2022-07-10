@@ -98,6 +98,13 @@ class HolidayList:
         # return your filtered holidays
         return filtered_hol_list
 
+    def displayHolidaysInWeek(self, year, week_number):
+        # Use your filter_holidays_by_week to get list of holidays within a week as a parameter
+        filt_hol_list = self.filter_holidays_by_week(year, week_number)
+        # Output formated holidays in the week.
+        for hol in filt_hol_list:
+            print(hol)
+
 
 
 #UI Start Up
