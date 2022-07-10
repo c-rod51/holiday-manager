@@ -92,6 +92,12 @@ class HolidayList:
         # Return the total number of holidays in innerHolidays
         return len(self.innerHolidays)
 
+    def filter_holidays_by_week(self, year, week_number):
+        # Use a Lambda function to filter innerHolidays by week number and year
+        filtered_hol_list = list(filter(lambda x : x.date.isocalendar()[1] == week_number and x.date.isocalendar()[0] == year, self.innerHolidays))
+        # return your filtered holidays
+        return filtered_hol_list
+
 
 
 #UI Start Up
