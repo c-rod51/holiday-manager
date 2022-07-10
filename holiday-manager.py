@@ -72,6 +72,22 @@ class HolidayList:
             holidayobj = Holiday(holiday_name, formatted_date)
             self.addHoliday(holidayobj)
 
+    def save_to_json(self, jsonlocation):
+        #Makee empty holiday dictionary list
+        holiday_dict_list= {"holidays" : []}
+        #Gather individual holiday objects from innerHoliday list and append to holiday dict list
+        for holiday in self.innerHolidays:
+            holiday_name = holiday.name
+            holidate = holiday.date
+            date_format = '%Y-%m-%d'
+            date = datetime.strftime(holidate, date_format)
+            holiday_dict = {'name': holiday_name, 'date': date}
+            holiday_dict_list['holidays'].append(holiday_dict)
+        # Write out json file to selected file.
+        with open(jsonlocation, 'w') as f:
+            json.dump(holiday_dict_list, f, sort_keys = True, indent = 4)
+            f.close()
+
 
 
 
@@ -136,6 +152,33 @@ def RemoveHoliday(holiday_list):
                 {holiday_name} not found.
             ''')
          #holiday_list.findHoliday(name, date)
+    
+    
+    #MainMenu()
+
+#UI Save Holiday List
+##
+def SaveHolidayList(holiday_list):
+    #Print welcome message
+    print(f'''
+        Save Holiday List
+        ===================
+    ''')
+    #User save input
+    user_save = str(input('Are you sure you want to save your changes? [y/n]: ')).lower()
+    #Check user response
+    if user_save == 'n':
+        print('''
+            Cancelled:
+            Holiday list file save cancelled.
+        ''')
+    elif user_save == 'y':
+        #Save list
+        holiday_list.save_to_json(jsonlocation)
+        print('''
+            Success:
+            Your Changes have been saved
+        ''')
     
     
     #MainMenu()

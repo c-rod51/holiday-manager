@@ -1,32 +1,36 @@
 {
- "holidays" : [
-     {
-         "name": "Margaret Thatcher Day",
-         "date": "2021-01-10"
-     },
-     {
-         "name": "World Sketchnote Day",
-         "date": "2021-01-11"
-     },
-     {
-         "name": "Zanzibar Revolution Day",
-         "date": "2021-01-12"
-     },
-     {
-         "name": "National Rubber Ducky Day",
-         "date": "2021-01-13"
-     },
-     {
-         "name": "Tamil Thai Pongdal Day",
-         "date": "2021-01-14"
-     },
-     {
-         "name": "National Bagel Day",
-         "date": "2021-01-15"
-     },
-     {
-         "name": "Signing of the Peace Accords",
-         "date": "2021-01-16"
-     }
- ]  
+    "holidays": [
+        {
+            "date": "2021-01-10",
+            "name": "Margaret Thatcher Day"
+        },
+        {
+            "date": "2021-01-11",
+            "name": "World Sketchnote Day"
+        },
+        {
+            "date": "2021-01-12",
+            "name": "Zanzibar Revolution Day"
+        },
+        {
+            "date": "2021-01-13",
+            "name": "National Rubber Ducky Day"
+        },
+        {
+            "date": "2021-01-14",
+            "name": "Tamil Thai Pongdal Day"
+        },
+        {
+            "date": "2021-01-15",
+            "name": "National Bagel Day"
+        },
+        {
+            "date": "2021-01-16",
+            "name": "Signing of the Peace Accords"
+        },
+        {
+            "date": "2022-12-25",
+            "name": "Christmas Day"
+        }
+    ]
 }
