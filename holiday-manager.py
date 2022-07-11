@@ -95,6 +95,26 @@ class HolidayList:
             json.dump(holiday_dict_list, f, sort_keys = True, indent = 4)
             f.close()
 
+    def scrapeHolidays(self):
+        current_year = int(datetime.now().isocalendar()[0])
+        #Years from current year-2 to current year+2
+        for year in range(current_year-2, current_year+3):
+            year_str = str(year)
+            # Scrape Holidays from https://www.timeanddate.com/holidays/us/2022?hol=33554809
+            html = getHTML(f"https://www.timeanddate.com/holidays/us/{year_str}?hol=33554809")
+            soup = BeautifulSoup(html, 'html.parser')
+            table = soup.find('table', attrs = {'id' : 'holidays-table'})
+            #Get each holiday name and date
+            for table_entry in table.find_all('tr', attrs = {'class' : 'showrow'}):
+                holiday = table_entry.find('a').string
+                date = table_entry.find('th').string
+                holiday_date = year_str + ' ' + date
+                date_format = '%Y %b %d'
+                holidate = datetime.strptime(holiday_date, date_format).date()
+                # Check to see if name and date of holiday is in innerHolidays array done in addHoliday method
+                hol_obj = Holiday(holiday, holidate)
+                self.addHoliday(hol_obj)
+
     def numHolidays(self):
         # Return the total number of holidays in innerHolidays
         return len(self.innerHolidays)
