@@ -28,14 +28,21 @@ class HolidayList:
         self.innerHolidays = []
    
     def addHoliday(self, holidayObj):
-        # Make sure holidayObj is an Holiday Object by checking the type
-        if isinstance(holidayObj, Holiday):
-            # Use innerHolidays.append(holidayObj) to add holiday
-            self.innerHolidays.append(holidayObj)
-            # print to the user that you added a holiday
-            print(f'Success: {holidayObj} has been added to the holiday list.')
-        else:
-            print('Error: Please try again.')
+        #Make sure holidayObj is not already in list
+        found_hol = self.findHoliday(holidayObj.name, holidayObj.date)
+        if found_hol != None:
+            print(f'Error: {holidayObj} already exists in list')
+            
+        elif found_hol == None:
+            
+            # Make sure holidayObj is a Holiday Object by checking the type
+            if isinstance(holidayObj, Holiday):
+                # Use innerHolidays.append(holidayObj) to add holiday
+                self.innerHolidays.append(holidayObj)
+                # print to the user that you added a holiday
+                print(f'Success: {holidayObj} has been added to the holiday list.')
+            else:
+                print('Error: Please try again.')
 
     def findHoliday(self, HolidayName, Date):
         # Find Holiday in innerHolidays
