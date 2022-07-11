@@ -184,6 +184,8 @@ def AddHoliday(holiday_list):
             incorrect_form = False
             holiday_object = Holiday(holiday_name, date)
             holiday_list.addHoliday(holiday_object)
+            global changes_saved
+            changes_saved = False
             
     #MainMenu()
 
@@ -216,6 +218,8 @@ def RemoveHoliday(holiday_list):
         if isinstance(found_holiday, Holiday):
             holiday_not_in_list = False
             holiday_list.removeHoliday(holiday_name, date)
+            global changes_save
+            changes_saved = False
         elif found_holiday == None:
             print(f'''
                 Error:
@@ -301,4 +305,5 @@ def Exit(holiday_list):
     if user_exit == 'n':
         MainMenu()
     elif user_exit == 'y':
-        break
+        global user_using
+        user_using = False
