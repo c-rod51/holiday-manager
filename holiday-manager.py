@@ -277,3 +277,28 @@ def ViewHolidays(holiday_list):
     
     
     #MainMenu()
+
+#UI Exit
+##
+def Exit(holiday_list):
+    #Print welcome message
+    print(f'''
+        Exit
+        =====
+    ''')
+    #Check if changes need to be saved
+    global changes_saved
+    #User exit input
+    if changes_saved == True:
+        user_exit = str(input('Are you sure you want to exit? [y/n]: ')).lower()
+    elif changes_saved == False:
+        user_exit = str(input('''
+            Are you sure you want to exit?
+            Your changes will be lost.
+            [y/n]: 
+            ''')).lower()
+    
+    if user_exit == 'n':
+        MainMenu()
+    elif user_exit == 'y':
+        break
