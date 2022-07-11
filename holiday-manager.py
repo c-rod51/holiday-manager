@@ -159,7 +159,40 @@ def StartUp(holiday_list):
         There are {num_holidays} holidays stored in the system
     ''')
     
-    #MainMenu()
+    MainMenu(holiday_list)
+
+#UI MainMenu
+##
+def MainMenu(holiday_list):
+    print(f'''
+        Holiday Menu
+        =====================================
+    ''')
+    #Store user selection from Main Menu
+    getting_input = True
+    while getting_input:
+        try:
+            user_selection = int(input('''
+                1. Add a Holiday
+                2. Remove a Holiday
+                3. Save Holiday List
+                4. View Holidays
+                5. Exit
+            '''))
+            getting_input = False
+        except:
+            print('Enter the number again')
+    #Point to appropriate directory
+    if user_selection == 1:
+        AddHoliday(holiday_list)
+    elif user_selection == 2:
+        RemoveHoliday(holiday_list)
+    elif user_selection == 3:
+        SaveHolidayList(holiday_list)
+    elif user_selection == 4:
+        ViewHolidays(holiday_list)
+    elif user_selection == 5:
+        Exit(holiday_list)
 
 #UI Add Holiday
 ##
@@ -187,7 +220,7 @@ def AddHoliday(holiday_list):
             global changes_saved
             changes_saved = False
             
-    #MainMenu()
+    MainMenu()
 
 #UI Remove Holiday
 ##
@@ -218,7 +251,7 @@ def RemoveHoliday(holiday_list):
         if isinstance(found_holiday, Holiday):
             holiday_not_in_list = False
             holiday_list.removeHoliday(holiday_name, date)
-            global changes_save
+            global changes_saved
             changes_saved = False
         elif found_holiday == None:
             print(f'''
@@ -228,7 +261,7 @@ def RemoveHoliday(holiday_list):
          #holiday_list.findHoliday(name, date)
     
     
-    #MainMenu()
+    MainMenu()
 
 #UI Save Holiday List
 ##
@@ -255,7 +288,7 @@ def SaveHolidayList(holiday_list):
         ''')
     
     
-    #MainMenu()
+    MainMenu()
 
 #UI View Holidays
 
@@ -280,7 +313,7 @@ def ViewHolidays(holiday_list):
         holiday_list.displayHolidaysInWeek(holiday_year, holiday_week)
     
     
-    #MainMenu()
+    MainMenu()
 
 #UI Exit
 ##
