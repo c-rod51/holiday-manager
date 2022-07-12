@@ -367,7 +367,7 @@ def ViewHolidays(holiday_list):
     else:
         holiday_week = int(holiday_week)
         print(f'These are the holidays for {holiday_year} week#{holiday_week}:')
-        holiday_list.displayHolidaysInWeek(holiday_year, holiday_week)
+        holiday_list.displayHolidaysInWeek(holiday_year, holiday_week, 0)
     
     
     #MainMenu()
@@ -414,6 +414,9 @@ def main():
     # 3. Create while loop for user to keep adding or working with the Calender
     global user_using
     user_using = True
+    #Track changes saved
+    global changes_saved
+    changes_saved = True
     while user_using == True:
         # 4. Display User Menu (Print the menu)
         StartUp(holiday_list)
