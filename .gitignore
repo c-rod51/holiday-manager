@@ -6,6 +6,7 @@ __pycache__/
 # Specific files
 config.py
 holiday-manager.ipynb
+holiday_startercode.py
 
 # C extensions
 *.so
